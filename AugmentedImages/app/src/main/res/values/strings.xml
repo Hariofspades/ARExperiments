@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Placard</string>
+    <string name="build_gradle">I always use <font fgcolor="#FFFFD600">\'+\'</font> in my \n build.gradle</string>
+    <string name="config">Lifecycle is easy when you have \n
+        <font fgcolor="#FFAB47BC">
+            android
+        </font>
+        <font fgcolor="#FFFFFFFF">
+            :configChanges=
+        </font>
+        <font fgcolor="#FF66BB6A">
+            \"orientation\"
+        </font>
+    </string>
+    <string name="vodka">Drink a shot of vodka every time \nyou hear the word \"fun\" when \nsomeone talks about Kotlin</string>
+</resources>
