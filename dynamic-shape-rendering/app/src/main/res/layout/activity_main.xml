@@ -6,14 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <fragment
-        android:id="@+id/sceneform_fragment"
-        android:name="com.google.ar.sceneform.ux.ArFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <Button
+        android:id="@+id/sphere"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:text="Sphere"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/cylinder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cylinder"
+        app:layout_constraintStart_toStartOf="@+id/sphere"
+        app:layout_constraintTop_toBottomOf="@+id/sphere" />
+
+    <Button
+        android:id="@+id/cube"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Cube"
+        app:layout_constraintStart_toStartOf="@+id/cylinder"
+        app:layout_constraintTop_toBottomOf="@+id/cylinder" />
+
+    <Button
+        android:id="@+id/texture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Texture"
+        app:layout_constraintStart_toStartOf="@+id/cube"
+        app:layout_constraintTop_toBottomOf="@+id/cube" />
 </android.support.constraint.ConstraintLayout>

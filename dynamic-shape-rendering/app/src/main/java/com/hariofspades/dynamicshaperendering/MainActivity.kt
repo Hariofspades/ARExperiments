@@ -1,52 +1,47 @@
 package com.hariofspades.dynamicshaperendering
 
-import android.graphics.Color
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.google.ar.core.Anchor
-import com.google.ar.sceneform.AnchorNode
-import com.google.ar.sceneform.math.Vector3
-import com.google.ar.sceneform.rendering.MaterialFactory
-import com.google.ar.sceneform.rendering.ModelRenderable
-import com.google.ar.sceneform.rendering.ShapeFactory
-import com.google.ar.sceneform.ux.ArFragment
-import com.google.ar.sceneform.ux.TransformableNode
+import android.view.View
+import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var fragment: ArFragment
+
+    override fun onClick(p0: View?) {
+        when (p0?.id) {
+
+            R.id.sphere -> startARactivity(1)
+
+            R.id.cylinder -> startARactivity(2)
+
+            R.id.cube -> startARactivity(3)
+
+            R.id.texture -> startARactivity(4)
+        }
+    }
+
+    private fun startARactivity(i: Int) {
+        val intent = Intent(this, ARActivity::class.java)
+        intent.putExtra("order", i)
+        startActivity(intent)
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        clickListeners()
 
-        fragment = supportFragmentManager
-                .findFragmentById(R.id.sceneform_fragment)
-                as ArFragment
-
-        fragment.setOnTapArPlaneListener { hitResult, plane, motionEvent ->
-            MaterialFactory.makeOpaqueWithColor(this,
-                    com.google.ar.sceneform.rendering.Color(Color.BLUE))
-                    .thenAccept { material ->
-                        addNodeToScene(fragment, hitResult.createAnchor(),
-                                ShapeFactory.makeSphere(0.1f, Vector3(0.0f, 0.15f, 0.0f), material))
-
-                    }
-        }
     }
 
-
-    private fun addNodeToScene(fragment: ArFragment, createAnchor: Anchor, modelObject: ModelRenderable) {
-
-        val anchorNode = AnchorNode(createAnchor)
-
-        TransformableNode(fragment.transformationSystem).apply {
-            renderable = modelObject
-            setParent(anchorNode)
-            select()
-        }
-
-        fragment.arSceneView.scene.addChild(anchorNode)
+    private fun clickListeners() {
+        sphere.setOnClickListener(this)
+        cylinder.setOnClickListener(this)
+        cube.setOnClickListener(this)
+        texture.setOnClickListener(this)
     }
+
 }
