@@ -19,8 +19,8 @@ import com.google.ar.sceneform.ux.TransformableNode
 import kotlinx.android.synthetic.main.activity_ar.*
 
 /**
- * An example full-screen activity that shows and hides the system UI (i.e.
- * status bar and navigation/system bar) with user interaction.
+ * Activity contatining Sceneform fragment, renders shape on command form
+ * the previous screen
  */
 class ARActivity : AppCompatActivity() {
 
@@ -36,9 +36,7 @@ class ARActivity : AppCompatActivity() {
 
         fragment.setOnTapArPlaneListener { hitResult, plane, motionEvent ->
 
-            val option = intent.extras
-
-            when (option.getInt("order")) {
+            when (intent.extras.getInt("order")) {
 
                 1 -> makeSphere(hitResult, Color.BLUE)
 
@@ -52,6 +50,11 @@ class ARActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Constructs sphere of radius 1f and at position 0.0f, 0.15f, 0.0f and with TEXTURE
+     * @param hitResult - If the hit result is a plane
+     * @param res - Image res for texture, here [R.drawable.sun]
+     */
     private fun makeTextureSphere(hitResult: HitResult, res: Int) {
         Texture.builder().setSource(BitmapFactory.decodeResource(resources, res))
                 .build()
@@ -65,6 +68,11 @@ class ARActivity : AppCompatActivity() {
                 }
     }
 
+    /**
+     * Constructs sphere of radius 1f and at position 0.0f, 0.15f, 0.0f on the plane
+     * @param hitResult - If the hit result is a plane
+     * @param res - Color
+     */
     private fun makeSphere(hitResult: HitResult, color: Int) {
         MaterialFactory.makeOpaqueWithColor(this,
                 com.google.ar.sceneform.rendering.Color(color))
@@ -75,6 +83,12 @@ class ARActivity : AppCompatActivity() {
                 }
     }
 
+    /**
+     * Constructs cylinder of radius 1f and at position 0.0f, 0.15f, 0.0f on the plane
+     * Need to mention height for the cylinder
+     * @param hitResult - If the hit result is a plane
+     * @param res - Color
+     */
     private fun makeCylinder(hitResult: HitResult, color: Int) {
         MaterialFactory.makeOpaqueWithColor(this,
                 com.google.ar.sceneform.rendering.Color(color))
@@ -85,6 +99,12 @@ class ARActivity : AppCompatActivity() {
                 }
     }
 
+    /**
+     * Constructs cube of radius 1f and at position 0.0f, 0.15f, 0.0f on the plane
+     * Here Vector3 takes up the size - 0.2f, 0.2f, 0.2f
+     * @param hitResult - If the hit result is a plane
+     * @param res - Color
+     */
     private fun makeCube(hitResult: HitResult, color: Int) {
         MaterialFactory.makeOpaqueWithColor(this,
                 com.google.ar.sceneform.rendering.Color(color))
@@ -95,9 +115,16 @@ class ARActivity : AppCompatActivity() {
                 }
     }
 
-    private fun addNodeToScene(fragment: ArFragment, createAnchor: Anchor, modelObject: ModelRenderable) {
 
-        val anchorNode = AnchorNode(createAnchor)
+    /**
+     * Adds node to the scene and the object.
+     * @param fragment - sceneform fragment
+     * @param anchor - created anchor at the tapped position
+     * @param modelObject - rendered object
+     */
+    private fun addNodeToScene(fragment: ArFragment, anchor: Anchor, modelObject: ModelRenderable) {
+
+        val anchorNode = AnchorNode(anchor)
 
         TransformableNode(fragment.transformationSystem).apply {
             renderable = modelObject
