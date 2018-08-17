@@ -81,21 +81,21 @@ class MainActivity : FragmentActivity(), ControlFragment.OnVector3ChangedListene
     override fun onSeekXChanged(value: Float) {
         anchorNode?.let {
             xCoordinate = value
-            it.localScale = Vector3(Vector3(xCoordinate, yCoordinate, zCoordinate))
+            it.localScale = Vector3(xCoordinate, yCoordinate, zCoordinate)
         }
     }
 
     override fun onSeekYChanged(value: Float) {
         anchorNode?.let {
             yCoordinate = value
-            it.localScale = Vector3(Vector3(xCoordinate, yCoordinate, zCoordinate))
+            it.localScale = Vector3(xCoordinate, yCoordinate, zCoordinate)
         }
     }
 
     override fun onSeekZChanged(value: Float) {
         anchorNode?.let {
             zCoordinate = value
-            it.localScale = Vector3(Vector3(xCoordinate, yCoordinate, zCoordinate))
+            it.localScale = Vector3(xCoordinate, yCoordinate, zCoordinate)
         }
     }
 }
