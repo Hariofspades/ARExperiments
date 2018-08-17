@@ -4,29 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".MainActivity">
 
     <fragment
-        android:id="@+id/arFragment"
-        android:name="com.hariofspades.vector3playground.ARFragment"
+        android:id="@+id/sceneform_fragment"
+        android:name="com.google.ar.sceneform.ux.ArFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/controlFragment"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_weight="1"
-        app:layout_constraintTop_toBottomOf="@+id/controlFragment" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="2" />
 
     <fragment
         android:id="@+id/controlFragment"
         android:name="com.hariofspades.vector3playground.ControlFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintVertical_weight="2"
-        app:layout_constraintBottom_toTopOf="@+id/arFragment"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sceneform_fragment"
+        app:layout_constraintVertical_weight="1" />
 
 </android.support.constraint.ConstraintLayout>
