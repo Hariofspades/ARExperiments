@@ -77,16 +77,16 @@ class MainActivity : AppCompatActivity(), ControlFragment.OnQuaternionChangedLis
     }
 
     override fun onLeft(value: Float) {
-        cubeNode.let {
+        cubeNode.apply {
             Log.d("left", value.toString())
-            it.localRotation = Quaternion.axisAngle(Vector3(0.0f, 1.0f, 0.0f), value)
+            localRotation = Quaternion.axisAngle(Vector3(0.0f, 1.0f, 0.0f), value)
         }
     }
 
     override fun onRight(value: Float) {
-        cubeNode.let {
+        cubeNode.apply {
             Log.d("right", value.toString())
-            it.localRotation = Quaternion.axisAngle(Vector3(0.0f, 1.0f, 0.0f), -value)
+            localRotation = Quaternion.axisAngle(Vector3(0.0f, 1.0f, 0.0f), -value)
         }
     }
 
