@@ -43,11 +43,6 @@ dependencies {
 }
 
 
-sceneform.asset('sampledata/canonical_face_mesh.fbx',
-        'default',
-        'sampledata/canonical_face_mesh.sfa',
-        'src/main/res/raw/canonical_face_mesh')
-
 sceneform.asset('sampledata/piratehat.obj',
         'default',
         'sampledata/piratehat.sfa',
